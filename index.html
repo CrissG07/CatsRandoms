@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="IMG/pets.png">
+    <meta name="description" content="Genera imágenes de gatos aleatorias, guarda tus favoritas y 
+    comparte las tuyas propias en esta página interactiva. Utilizando la API de TheCatAPI, puedes 
+    explorar una galería de adorables gatos, agregarlos a tus favoritos y subir tus propias fotos 
+    para que todos las disfruten. ¡Disfruta de un mundo lleno de felinos y personaliza tu experiencia 
+    con gatos según tus gustos!">
+    <meta name="keywords"
+        content="gatos,generador,lindos,cats,favoritos,subir fotos,gaticos en internet,gatos en internet,felinos,preciosos gatos,gifs,">
+    <meta name="robots" content="index, follow"> <!-- Permite a los motores de búsqueda indexar la página. -->
+    <meta name="author" content="Cristian"> <!-- Autor de la página -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="preconnect" href="https://unpkg.com"> <!-- Sustituye "example.com" por el dominio requerido. -->
+    <link rel="preconnect" href="https://29.media.tumblr.com">
+    <link rel="preconnect" href="https://64.media.tumblr.com">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <title>Cats Randoms</title>
+</head>
+
+<body>
+    <header class="header-container">
+        <h1 class="header--title">Gatos Aleatorios</h1>
+        <div class="header-error">
+            <span id="error"></span>
+        </div>
+
+    </header>
+    <main>
+
+        <section id="randomCats" class="main-container">
+            <div class="container-body">
+                <article class="body-article">
+                    <img id="img1" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                    <button id="fav1" class="article--button">Guardar en favoritos</button>
+                </article>
+
+                <article class="body-article">
+                    <img id="img2" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                    <button id="fav2" class="article--button">Guardar en favoritos</button>
+                </article>
+
+                <article class="body-article">
+                    <img id="img3" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                    <button id="fav3" class="article--button">Guardar en favoritos</button>
+                </article>
+            </div>
+
+            <button id="btn" class="btn">Cambiar</button>
+        </section>
+
+        <section id="uploadingCat" class="main-container-upload">
+            <h2 class="upload--title">Sube la foto de tu michi</h2>
+            <form action="" id="uploadingForm">
+                <label for="file">Sube la imagen</label>
+                <input id="file" type="file" name="file">
+                <button type="button" onclick="uploadCatFoto()">Enviar<i class='bx bx-send'></i>
+                </button>
+            </form>
+        </section>
+        <section id="main-favorites" class="main-container-favorites">
+            <h2 class="favorites--title">Gatos en favoritos</h2>
+            <div id="favoriteCats" class="container-body">
+            </div>
+        </section>
+
+
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
