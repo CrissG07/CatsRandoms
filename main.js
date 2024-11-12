@@ -52,7 +52,6 @@ async function fetchdatafavorite() {
         if (!response.ok) {
             throw new Error('Error en el llamado de la api')
         }
-
         const data = await response.json()
         console.log('favorites')
         console.log(data)
@@ -61,7 +60,6 @@ async function fetchdatafavorite() {
             spanError.innerHTML = 'Hubo un error: ' + response.status + data.message;
         } else {
             const div = document.getElementById('favoriteCats');
-            const section = document.getElementById('main-favorites');
             div.innerHTML = "";  // Limpiar contenido anterior
             
             

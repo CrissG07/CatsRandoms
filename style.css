@@ -140,7 +140,6 @@ margin: 10px auto;
 }
 
 .main-container-favorites {
-    display: flex; /* Usar Flexbox para el layout */
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
     padding: 10px;
     flex-wrap: wrap; /* Permitir que los artículos se ajusten a varias filas si es necesario */
@@ -154,8 +153,9 @@ margin: 10px auto;
         flex-wrap: wrap; /* Permitir que se ajusten al tamaño */
     }
 
-    .main-container-favorites {
-        flex-direction: row; /* Establecer los elementos en fila en pantallas grandes */
+    .favorites{
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .body-article {
@@ -169,6 +169,10 @@ margin: 10px auto;
         top: calc(65% - 11px);
         left: calc(52%);
         
+    }
+
+    .favorites--title{
+        display: block;
     }
 
     .main-container .btn{
