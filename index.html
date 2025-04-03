@@ -1,81 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO and Social Media Metadata -->
+    <title>Cats Randoms - Explora y Comparte Gatitos</title>
     <link rel="icon" type="image/png" href="IMG/pets.png">
-    <meta name="description" content="Genera imágenes de gatos aleatorias, en favoritas estan todas las favoritas de la comunidad y 
-    comparte las tuyas propias en esta página interactiva. Utilizando la API de TheCatAPI, puedes 
-    explorar una galería de adorables gatos, agregarlos a tus favoritos y subir tus propias fotos 
-    para que todos las disfruten. ¡Disfruta de un mundo lleno de felinos y personaliza tu experiencia 
-    con gatos según tus gustos!">
-    <meta name="keywords"
-        content="gatos,generador,lindos,cats,favoritos,subir fotos,gaticos en internet,gatos en internet,felinos,preciosos gatos,gifs,">
-    <meta name="robots" content="index, follow"> <!-- Permite a los motores de búsqueda indexar la página. -->
-    <meta name="author" content="Cristian"> <!-- Autor de la página -->
+    <meta name="description" content="Explora, guarda y comparte adorables imágenes de gatos. Una comunidad felina interactiva con la API de TheCatAPI.">
+    <meta name="keywords" content="gatos, cats, galería de gatos, fotos de gatos, comunidad felina">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Cristian">
+
+    <!-- Progressive Web App and Mobile Optimizations -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="preconnect" href="https://unpkg.com"> <!-- Sustituye "example.com" por el dominio requerido. -->
-    <link rel="preconnect" href="https://29.media.tumblr.com">
-    <link rel="preconnect" href="https://64.media.tumblr.com">
 
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://api.thecatapi.com">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="main.js" as="script">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <title>Cats Randoms</title>
 </head>
 
 <body>
-    <header class="header-container">
+
+    <header class="header-container" role="banner">
         <h1 class="header--title">Gatos Aleatorios</h1>
-        <div class="header-error">
+        <div class="header-error" role="alert" aria-live="assertive">
             <span id="error"></span>
         </div>
-
     </header>
-    <main>
 
-        <section id="randomCats" class="main-container">
-            <div class="container-body">
-                <article class="body-article">
-                    <img id="img1" width="400px" height="400px" alt="Foto de gatos aleatorias">
-                    <button id="fav1" class="article--button">Guardar en favoritos</button>
-                </article>
+    <main id="main-content" role="main">
+        <section id="randomCats" class="main-container" aria-labelledby="random-cats-title">
+            <h2 id="random-cats-title" class="sr-only">Gatos Aleatorios</h2>
+            <ul class="container-body">
+                <li>
+                    <article class="body-article">
+                        <img id="img1" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                        <button id="fav1" class="article--button">Guardar en favoritos</button>
+                    </article>
+                </li>
 
-                <article class="body-article">
-                    <img id="img2" width="400px" height="400px" alt="Foto de gatos aleatorias">
-                    <button id="fav2" class="article--button">Guardar en favoritos</button>
-                </article>
+                <li>
+                    <article class="body-article">
+                        <img id="img2" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                        <button id="fav2" class="article--button">Guardar en favoritos</button>
+                    </article>
+                </li>
 
-                <article class="body-article">
-                    <img id="img3" width="400px" height="400px" alt="Foto de gatos aleatorias">
-                    <button id="fav3" class="article--button">Guardar en favoritos</button>
-                </article>
-            </div>
+                <li>
+                    <article class="body-article">
+                        <img id="img3" width="400px" height="400px" alt="Foto de gatos aleatorias">
+                        <button id="fav3" class="article--button">Guardar en favoritos</button>
+                    </article>
+                </li>
+            </ul>
 
-            <button id="btn" class="btn">Cambiar</button>
+            <button id="btn" class="btn" aria-label="Cargar nuevos gatos">Cambiar</button>
         </section>
 
-        <section id="uploadingCat" class="main-container-upload">
-            <h2 class="upload--title">Sube la foto de tu michi</h2>
-            <form action="" id="uploadingForm">
-                <label for="file">Sube la imagen</label>
-                <input id="file" type="file" name="file">
-                <button type="button" onclick="uploadCatFoto()">Enviar<i class='bx bx-send'></i>
+        <section id="uploadingCat" class="main-container-upload" aria-labelledby="upload-title">
+            <h2 id="upload-title">Sube la foto de tu michi</h2>
+            <form id="uploadingForm">
+                <p id="upload-description" class="sr-only">Formulario para subir una imagen de gato</p>
+                <label for="file">Selecciona una imagen</label>
+                <input 
+                    id="file" 
+                    type="file" 
+                    name="file" 
+                    accept="image/*" 
+                    aria-required="true"
+                >
+                <button 
+                    type="button" 
+                    onclick="uploadCatFoto()" 
+                    aria-label="Enviar imagen"
+                >
+                    Enviar<i class='bx bx-send' aria-hidden="true"></i>
                 </button>
             </form>
         </section>
-        <section id="main-favorites" class="main-container-favorites">
-            <h2 class="favorites--title">Gatos en favoritos</h2>
-            <div id="favoriteCats" class="favorites">
-            </div>
+
+        <section id="main-favorites" class="main-container-favorites" aria-labelledby="favorites-title">
+            <h2 id="favorites-title" class="favorites--title">Gatos en favoritos</h2>
+            <ul id="favoriteCats" class="favorites">
+            </ul>
         </section>
-
-
     </main>
-    <script src="main.js"></script>
-</body>
 
+    <script src="main.js" defer></script>
+</body>
 </html>
